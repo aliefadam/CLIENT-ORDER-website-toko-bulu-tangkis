@@ -1,0 +1,10 @@
+@import url("poppins.css");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  /* line-height: 1 !important; */
+}
