@@ -69,75 +69,7 @@
 <!-- End Content -->
 
 <!-- scripts -->
-<script>
-$(document).ready(function() {
-    $("#btn-tambah-variant").on("click", tambahVariant);
-    $(document).on("click", ".btn-remove-value", removeValueVarian);
-
-    function tambahVariant() {
-        const html = `
-            <div class="list mb-2">
-                <div class="item-1">
-                    <input type="text" class="form-control" name="nama_variant[]" placeholder="Nama">
-                </div>
-                <div class="item-2">
-                    <input type="text" class="form-control" name="value_variant[]"
-                        placeholder="Nilai | Pisahkan Koma">
-                </div>
-                <div class="item-3">
-                    <button class="btn btn-danger btn-remove-value" type="button"><i class="fa-regular fa-circle-minus"></i></button>
-                </div>
-            </div>`;
-
-        $("#variant-list").append(html);
-    }
-
-    function removeValueVarian() {
-        $(this).parent().parent().remove();
-    }
-
-});
-// $(document).ready(function() {
-//     $("#btn-tambah-value-varian").click(tambahValueVarian);
-//     $("#btn-tambah-varian").click(tambahVarian);
-//     $(document).on("click", ".btn-remove-value", removeValueVarian);
-
-//     let count = 1;
-//     const valueVarianList = [];
-
-//     function tambahValueVarian() {
-//         const html = `
-//         <div class="mb-3 d-flex justify-content-between gap-2">
-//             <input type="text" class="form-control" id="name" name="value_varian[]">
-//             <button class="btn btn-danger btn-remove-value" data-index="${count}"><i class="fa-regular fa-circle-minus"></i></button>
-//         </div>`;
-
-//         $("#valueVarian").append(html);
-//         count++;
-//     }
-
-//     function removeValueVarian() {
-//         const index = $(this).data("index");
-//         $(this).parent().remove();
-//         valueVarianList.splice(0, valueVarianList.length);
-//         tambahVarian();
-//     }
-
-//     function tambahVarian() {
-//         const nameVariant = $("input[name='name_varian']").val();
-//         const valueVariant = $("input[name='value_varian[]']").get();
-//         const variants = [];
-//         valueVariant.forEach((value, index) => {
-//             const varian = value.value;
-//             variants.push(varian);
-//         })
-//         valueVarianList.push({
-//             name: nameVariant,
-//             value: variants
-//         })
-//     }
-// });
-</script>
+<script type="module" src="../../assets/js/admin/product-add.js"></script>
 
 <script type="module">
 import {

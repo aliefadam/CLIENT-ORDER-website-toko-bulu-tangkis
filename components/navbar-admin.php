@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active text-danger" aria-current="page" href="#">
+                    <a class="nav-link active text-danger" aria-current="page" href="../../config/functions.php?logout">
                         <i class="fa-regular fa-left-from-bracket me-1"></i> Keluar
                     </a>
                 </li>

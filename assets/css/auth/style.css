@@ -1,0 +1,42 @@
+main {
+  height: 100vh;
+  background-color: #ccc;
+}
+
+#login-form {
+  width: 40%;
+}
+
+.text-primary {
+  color: #131842 !important;
+}
+
+.text-secondary {
+  color: #e68369 !important;
+}
+
+.btn-primary {
+  display: flex;
+  gap: 5px;
+  border-radius: 20px;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: #131842 !important;
+  background-color: #131842 !important;
+}
+
+.btn-secondary {
+  display: flex;
+  gap: 5px;
+  border-radius: 20px;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: #e68369 !important;
+  background-color: #e68369 !important;
+}
+
+.hover\:underlined:hover {
+  text-decoration: underline !important;
+}

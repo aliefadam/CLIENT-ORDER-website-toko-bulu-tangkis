@@ -23,7 +23,7 @@ $basename = str_replace(".php", "", $basename);
         <span class="poppins-medium sidebar-title mt-3">Master</span>
         <li class="nav-item mb-1">
             <a href="products.php"
-                class="nav-link <?= $basename == "products" || $basename == "products-add" ? "active" : "" ?> sidebar"
+                class="nav-link <?= $basename == "products" || $basename == "products-add" || $basename == "product-edit" ? "active" : "" ?> sidebar"
                 aria-current="page">
                 <i class="fa-regular fa-boxes-stacked me-1 py-2"></i>
                 Produk

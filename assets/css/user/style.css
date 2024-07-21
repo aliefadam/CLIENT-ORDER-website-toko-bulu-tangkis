@@ -1,0 +1,19 @@
+.content {
+  padding-top: 80px;
+}
+
+nav {
+  background-color: #131842;
+}
+
+nav .nav-link.active {
+  color: white !important;
+}
+
+nav .nav-link {
+  color: #ccc !important;
+}
+
+nav .nav-link:hover {
+  color: #ddd !important;
+}
