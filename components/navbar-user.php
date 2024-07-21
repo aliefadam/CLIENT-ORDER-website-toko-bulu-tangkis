@@ -1,3 +1,8 @@
+<?php
+$basename = basename($_SERVER['PHP_SELF']);
+$basename = str_replace(".php", "", $basename);
+?>
+
 <nav class="navbar fixed-top navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand text-white" href="#">
@@ -10,12 +15,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">
+                    <a class="nav-link <?= $basename == "index" ? "active" : "" ?>" aria-current="page"
+                        href="index.php">
                         <i class="fa-regular fa-house me-1"></i> Beranda
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="transaction-history.php">
                         <i class="fa-regular fa-clock-rotate-left me-1"></i> Riwayat Transaksi
                     </a>
                 </li>

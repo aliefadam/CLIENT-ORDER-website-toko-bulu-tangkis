@@ -31,6 +31,18 @@ function getProductById($id)
     return mysqli_fetch_assoc($result);
 }
 
+function getProductByCategory($category)
+{
+    global $conn;
+    $query = "SELECT * FROM product WHERE category = '$category'";
+    $result = mysqli_query($conn, $query);
+    $data = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = (object)$row;
+    }
+    return $data;
+}
+
 function searchProduct($keyword)
 {
     global $conn;
@@ -66,6 +78,8 @@ function searchUser($keyword)
     }
     return $data;
 }
+
+
 
 function formatMoney($num)
 {
