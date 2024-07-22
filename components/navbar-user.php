@@ -21,7 +21,8 @@ $basename = str_replace(".php", "", $basename);
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="transaction-history.php">
+                    <a class="nav-link <?= $basename == "transaction-history" ? "active" : "" ?>"
+                        href="transaction-history.php">
                         <i class="fa-regular fa-clock-rotate-left me-1"></i> Riwayat Transaksi
                     </a>
                 </li>

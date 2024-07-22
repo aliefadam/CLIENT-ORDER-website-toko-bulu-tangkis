@@ -41,7 +41,7 @@
             <?php foreach (getProduct() as $i => $product) : ?>
             <tr>
                 <td><?= $i + 1 ?></td>
-                <td><?= $product->name ?></td>
+                <td style="width: 500px;"><?= $product->name ?></td>
                 <td><?= $product->category ?></td>
                 <td><?= formatMoney($product->price) ?></td>
                 <td>

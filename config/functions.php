@@ -1,8 +1,12 @@
 <?php
 
-session_start();
 include_once "database.php";
+include_once "helper.php";
+require_once "../vendor/autoload.php";
 date_default_timezone_set('Asia/Jakarta');
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 function showPage()
 {
@@ -187,6 +191,59 @@ function login($data)
     }
 }
 
+function buy($data)
+{
+    global $conn;
+    $userID = $_SESSION["user"]["id"];
+    $productID = $data["id"];
+    $listVariant = $data["list_variant"] == "[]" ? null : $data["list_variant"];
+    $price = getProductById($productID)["price"];
+    $created_at = date("Y-m-d H:i:s");
+
+    $sql = "INSERT INTO transaction (user_id, product_id, list_variant, price, created_at) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("issds", $userID, $productID, $listVariant, $price, $created_at);
+    $stmt->execute();
+    $stmt->close();
+
+    header("Location: ../pages/user/thanks.php");
+}
+
+function exportExcel()
+{
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    $header = ['Nama Pembeli', 'Barang Dibeli', 'Variant', 'Harga', 'Tanggal'];
+    $column = 'A';
+
+    foreach ($header as $heading) {
+        $sheet->setCellValue($column . '1', $heading);
+        $sheet->getStyle($column . '1')->getFont()->setBold(true);
+        $column++;
+    }
+
+    $data = getTransactionForExport();
+    $rowNumber = 2;
+
+    foreach ($data as $row) {
+        $sheet->setCellValue('A' . $rowNumber, $row->nama_pembeli);
+        $sheet->setCellValue('B' . $rowNumber, $row->barang_dibeli);
+        $sheet->setCellValue('C' . $rowNumber, $row->list_variant == null ? "-" : $row->list_variant);
+        $sheet->setCellValue('D' . $rowNumber, formatMoney($row->harga));
+        $sheet->setCellValue('E' . $rowNumber, $row->tanggal);
+        $rowNumber++;
+    }
+
+    $writer = new Xlsx($spreadsheet);
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="laporan-penjualan.xlsx"');
+    header('Cache-Control: max-age=0');
+
+    $writer->save('php://output');
+}
+
+
 if (isset($_GET['page'])) {
     showPage();
 }
@@ -214,4 +271,12 @@ if (isset($_POST["login"])) {
 if (isset($_GET["logout"])) {
     session_destroy();
     header("Location: ../pages/auth/login.php");
+}
+
+if (isset($_POST["buy"])) {
+    buy($_POST);
+}
+
+if (isset($_GET["export-excel"])) {
+    exportExcel();
 }

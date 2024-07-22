@@ -1,3 +1,7 @@
+.content {
+  min-height: 100vh;
+}
+
 nav {
   top: 0;
   padding: 11px !important;
@@ -44,6 +48,17 @@ nav {
   font-size: 15px;
   border: #e68369 !important;
   background-color: #e68369 !important;
+}
+
+.btn-success {
+  display: flex;
+  gap: 7px;
+  border-radius: 20px;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: #1d6f42 !important;
+  background-color: #1d6f42 !important;
 }
 
 table tr th,

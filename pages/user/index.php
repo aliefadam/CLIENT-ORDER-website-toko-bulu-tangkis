@@ -15,12 +15,12 @@
                     <i class="fa-regular fa-magnifying-glass"></i>
                 </span>
                 <input type="text" class="form-control" placeholder="Cari produk di kategori raket"
-                    aria-label="Username" aria-describedby="basic-addon1">
+                    aria-label="Username" id="search-raket" aria-describedby="basic-addon1">
             </div>
         </div>
         <hr>
 
-        <div class="row g-3">
+        <div class="row g-3" id="Raket-list">
             <?php foreach (getProductByCategory("raket") as $product) :  ?>
             <a class="col-3 text-decoration-none" href="product-detail.php?id=<?= $product->id ?>">
                 <div class="border rounded p-2">
@@ -43,13 +43,13 @@
                 <span class="input-group-text" id="basic-addon1">
                     <i class="fa-regular fa-magnifying-glass"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="Cari produk di kategori sepatu"
+                <input type="text" id="search-sepatu" class="form-control" placeholder="Cari produk di kategori sepatu"
                     aria-label="Username" aria-describedby="basic-addon1">
             </div>
         </div>
         <hr>
 
-        <div class="row g-3">
+        <div class="row g-3" id="Sepatu-list">
             <?php foreach (getProductByCategory("sepatu") as $product) :  ?>
             <a class="col-3 text-decoration-none" href="product-detail.php?id=<?= $product->id ?>">
                 <div class="border rounded p-2">
@@ -72,13 +72,14 @@
                 <span class="input-group-text" id="basic-addon1">
                     <i class="fa-regular fa-magnifying-glass"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="Cari produk di kategori shuttlecock"
-                    aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" id="search-shuttlecock" class="form-control"
+                    placeholder="Cari produk di kategori shuttlecock" aria-label="Username"
+                    aria-describedby="basic-addon1">
             </div>
         </div>
         <hr>
 
-        <div class="row g-3">
+        <div class="row g-3" id="Shuttlecock-list">
             <?php foreach (getProductByCategory("shuttlecock") as $product) :  ?>
             <a class="col-3 text-decoration-none" href="product-detail.php?id=<?= $product->id ?>">
                 <div class="border rounded p-2">
@@ -95,5 +96,9 @@
     </div>
 </div>
 <!-- End Content -->
+
+<!-- script -->
+<script type="module" src="../../assets/js/user/product.js"></script>
+<!-- end script -->
 
 <?php include_once "../../components/footer-user.php" ?>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-white shadow shadow-sm" style="position: fixed; width: calc(100% - 280px);">
     <div class="container-fluid">
-        <a class="navbar-brands text-decoration-none text-black" href="#">Selasa, 12 Februari 2023</a>
+        <a class="navbar-brands text-decoration-none text-black" href="#"><?= date("D, d M Y") ?></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

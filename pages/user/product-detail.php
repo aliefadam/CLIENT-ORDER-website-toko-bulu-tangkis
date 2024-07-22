@@ -24,7 +24,7 @@
                         <?php foreach ($variant->value as $index_value => $value) : ?>
                         <div class="col-auto">
                             <div class="border rounded py-2 px-3 mb-3 cursor-pointer select-variant select-variant-<?= $index ?> <?= $index_value == 0 ? "variant-active" : "" ?>"
-                                data-index="<?= $index ?>">
+                                data-index="<?= $index ?>" data-variant="<?= $variant->name ?>:<?= $value ?>">
                                 <?= $value ?>
                             </div>
                         </div>
@@ -44,9 +44,13 @@
                 <i class="fa-regular fa-circle-info me-2"></i> Pastikan semua sudah benar ya
             </span>
             <div class="mt-3">
-                <button class="btn btn-primary w-100 text-center d-block">
-                    <i class="fa-regular fa-money-bill-wave me-1"></i> Beli Sekarang
-                </button>
+                <form action="../../config/functions.php" method="POST">
+                    <input type="hidden" name="id" value="<?= $product->id ?>">
+                    <input type="hidden" name="list_variant" id="list-variant">
+                    <button name="buy" class="btn btn-primary w-100 text-center d-block">
+                        <i class="fa-regular fa-money-bill-wave me-1"></i> Beli Sekarang
+                    </button>
+                </form>
             </div>
         </div>
     </div>

@@ -11,6 +11,11 @@ if (!isLogin()) {
 }
 $title = basename($_SERVER['PHP_SELF']);
 $title = ucfirst(str_replace(".php", "", $title));
+if ($title == "Index") {
+    $title = "Beranda";
+} elseif ($title == "Transaction-history") {
+    $title = "Riwayat Transaksi";
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +24,7 @@ $title = ucfirst(str_replace(".php", "", $title));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed Sports - <?= $title == "Index" ? "Beranda" : $title ?></title>
+    <title>Speed Sports - <?= $title ?></title>
 
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
