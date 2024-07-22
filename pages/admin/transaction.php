@@ -24,19 +24,19 @@
             <tr>
                 <th>No</th>
                 <th scope="col">Pembeli</th>
-                <th scope="col">Alamat</th>
                 <th scope="col">Barang Dibeli</th>
+                <th scope="col">Jumlah</th>
                 <th scope="col">Varian</th>
-                <th scope="col">Harga</th>
+                <th scope="col">Total Harga</th>
             </tr>
         </thead>
         <tbody id="user-list">
             <?php foreach (getAllTransaction() as $i => $transaction) : ?>
             <tr>
                 <td><?= $i + 1 ?></td>
-                <td><?= $transaction->user_name ?> - <?= $transaction->user_email ?></td>
-                <td><?= $transaction->user_address ?></td>
-                <td style="width: 25s0px;"><?= $transaction->name ?></td>
+                <td style="width: 150px;"><?= $transaction->user_name ?> - <?= $transaction->user_email ?></td>
+                <td style="width: 250px;"><?= $transaction->name ?></td>
+                <td><?= $transaction->qty ?> x <?= formatMoney($transaction->price) ?></td>
                 <td>
                     <?php if (empty($transaction->list_variant)) : ?>
                     Tidak ada variant
@@ -47,7 +47,7 @@
                         <?php endforeach; ?>
                     </ul>
                 </td>
-                <td><?= formatMoney($transaction->price) ?></td>
+                <td><?= formatMoney($transaction->sub_total) ?></td>
             </tr>
             <?php endforeach ?>
         </tbody>

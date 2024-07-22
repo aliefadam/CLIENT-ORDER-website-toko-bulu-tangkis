@@ -17,7 +17,9 @@
                             alt="">
                     </div>
                     <div class="col-8">
-                        <p class="poppins-semibold fs-4 text-primary"><?= $transaction->name ?></p>
+                        <p class="poppins-semibold fs-4 text-primary mb-1"><?= $transaction->name ?></p>
+                        <span class="poppins-medium mb-3 d-block"><?= $transaction->qty ?> x
+                            <?= formatMoney($transaction->price) ?></span>
                         <ul>
                             <?php foreach (showVariant($transaction->list_variant) as $variant) : ?>
                             <li><?= $variant ?></li>
@@ -27,7 +29,7 @@
                     <div class="col-2">
                         <span class="d-block">Total Belanja</span>
                         <span
-                            class="d-block poppins-semibold fs-5 text-secondary"><?= formatMoney($transaction->price) ?></span>
+                            class="d-block poppins-semibold fs-5 text-secondary"><?= formatMoney($transaction->sub_total) ?></span>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@ function getProductById($id)
 function getProductByCategory($category)
 {
     global $conn;
-    $query = "SELECT * FROM product WHERE category = '$category'";
+    $query = "SELECT * FROM product WHERE category = '$category' AND stock > 0";
     $result = mysqli_query($conn, $query);
     $data = [];
     while ($row = mysqli_fetch_assoc($result)) {
@@ -140,8 +140,9 @@ function getTransactionForExport()
         $data[] = (object)[
             'nama_pembeli' => $row['user_name'] . " - " . $row['user_email'],
             'barang_dibeli' => $row['product_name'],
+            "jumlah" => $row['qty'] . " x " . formatMoney($row['price']),
             'list_variant' => $row["list_variant"],
-            'harga' => $row['price'],
+            'harga' => $row['sub_total'],
             'tanggal' => $row['created_at']
         ];
     }
@@ -190,7 +191,7 @@ function getCountTransaction()
 function getTotalIncome()
 {
     global $conn;
-    $sql = "SELECT SUM(price) as total FROM transaction";
+    $sql = "SELECT SUM(sub_total) as total FROM transaction";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     return formatMoney($row["total"] ?? 0);
@@ -208,4 +209,24 @@ function getTransactionCountByCategory($category)
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     return $row["count"];
+}
+
+function getMutationStock()
+{
+    global $conn;
+    $sql = "SELECT *, product.name as product_name, stock_mutation.description as stock_mutation_description FROM stock_mutation INNER JOIN product ON stock_mutation.product_id = product.id ORDER BY created_at DESC";
+    $result = mysqli_query($conn, $sql);
+    $data = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[] = (object)$row;
+    }
+    return $data;
+}
+
+function existInTransaction($productID)
+{
+    global $conn;
+    $sql = "SELECT * FROM transaction WHERE product_id = $productID";
+    $result = mysqli_query($conn, $sql);
+    return mysqli_num_rows($result) > 0;
 }

@@ -17,8 +17,7 @@
             <span class="input-group-text" id="basic-addon1">
                 <i class="fa-regular fa-magnifying-glass"></i>
             </span>
-            <input type="text" class="form-control py-2" placeholder="Cari Produk..." aria-label="Username"
-                aria-describedby="basic-addon1" id="search-keyword">
+            <input type="text" class="form-control py-2" placeholder="Cari Produk..." aria-label="Username" aria-describedby="basic-addon1" id="search-keyword">
         </div>
         <a href="products-add.php" class="btn btn-primary">
             <i class="fa-regular fa-circle-plus"></i>
@@ -29,48 +28,45 @@
     <table class="table mt-4">
         <thead>
             <tr>
-                <!-- <th scope="col">#</th> -->
                 <th>No</th>
                 <th scope="col">Nama Produk</th>
                 <th scope="col">Kategori</th>
                 <th scope="col">Harga</th>
+                <th scope="col">Stok</th>
                 <th scope="col">Aksi</th>
             </tr>
         </thead>
         <tbody id="product-list">
             <?php foreach (getProduct() as $i => $product) : ?>
-            <tr>
-                <td><?= $i + 1 ?></td>
-                <td style="width: 500px;"><?= $product->name ?></td>
-                <td><?= $product->category ?></td>
-                <td><?= formatMoney($product->price) ?></td>
-                <td>
-                    <div class="d-flex gap-2">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-detail-product"
-                            data-product-id="<?= $product->id ?>" data-bs-toggle="modal"
-                            data-bs-target="#detailProductModal">
-                            <i class="fa-regular fa-eye"></i>
-                            Detail
-                        </a>
-                        <a href="product-edit.php?id=<?= $product->id ?>" class="btn btn-sm btn-warning">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                            Edit
-                        </a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-danger btn-delete-product"
-                            data-product-id="<?= $product->id ?>" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                            <i class="fa-regular fa-trash-can"></i>
-                            Hapus
-                        </a>
-                    </div>
-                </td>
-            </tr>
+                <tr>
+                    <td><?= $i + 1 ?></td>
+                    <td style="width: 500px;"><?= $product->name ?></td>
+                    <td><?= $product->category ?></td>
+                    <td><?= formatMoney($product->price) ?></td>
+                    <td><?= $product->stock ?></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-detail-product" data-product-id="<?= $product->id ?>" data-bs-toggle="modal" data-bs-target="#detailProductModal">
+                                <i class="fa-regular fa-eye"></i>
+                                Detail
+                            </a>
+                            <a href="product-edit.php?id=<?= $product->id ?>" class="btn btn-sm btn-warning">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                Edit
+                            </a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger btn-delete-product" data-product-id="<?= $product->id ?>" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <i class="fa-regular fa-trash-can"></i>
+                                Hapus
+                            </a>
+                        </div>
+                    </td>
+                </tr>
             <?php endforeach ?>
         </tbody>
     </table>
 
     <!-- Detail Product Modal -->
-    <div class="modal fade" id="detailProductModal" tabindex="-1" aria-labelledby="detailProductModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="detailProductModal" tabindex="-1" aria-labelledby="detailProductModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

@@ -47,7 +47,7 @@
                 <h1 class="poppins-medium fs-5 text-primary text-center">Data Transaksi Berdasarkan Kategori</h1>
                 <canvas id="myChart" data-sepatu="<?= getTransactionCountByCategory("Sepatu") ?>"
                     data-raket="<?= getTransactionCountByCategory("Raket") ?>"
-                    data-shuttlecock="<?= getTransactionCountByCategory("Shuttlecock") ?>"></canvas>
+                    data-shuttlecock="<?= getTransactionCountByCategory("Shuttlecock") ?>" class=""></canvas>
             </div>
         </div>
     </div>

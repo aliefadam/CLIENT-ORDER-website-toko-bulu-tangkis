@@ -43,6 +43,10 @@
             </div>
             <div class="col-6" style="height: fit-content;">
                 <div class="bg-white p-4 shadow shadow-sm">
+                    <div class="mb-4">
+                        <label for="stok" class="form-label">Stok Awal</label>
+                        <input required type="number" class="form-control" id="stok" name="stok">
+                    </div>
                     <div class="mb-3 d-flex justify-content-between align-items-center">
                         <label for="name" class="form-label">Varian Produk</label>
                         <button id="btn-tambah-variant" class="btn btn-secondary" type="button">
@@ -53,7 +57,7 @@
                     <div id="variant-list" class="mb-3"></div>
                     <div class="mb-4">
                         <label for="gambar" class="form-label">Gambar</label>
-                        <input required type="file" class="form-control" id="gambar" name="gambar">
+                        <input accept="image/*" required type="file" class="form-control" id="gambar" name="gambar">
                     </div>
                     <div class="d-flex justify-content-end">
                         <button class="btn btn-primary" name="tambah-produk">

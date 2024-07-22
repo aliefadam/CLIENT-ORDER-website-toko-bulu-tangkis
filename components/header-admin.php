@@ -12,6 +12,11 @@ if (!isLogin()) {
 
 $title = basename($_SERVER['PHP_SELF']);
 $title = ucfirst(str_replace(".php", "", $title));
+if ($title  == "Index") {
+    $title = "Beranda";
+} else if ($title == "Stock-mutation") {
+    $title = "Mutasi Stok";
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +25,7 @@ $title = ucfirst(str_replace(".php", "", $title));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed Sports Admin - <?= $title == "Index" ? "Beranda" : $title ?></title>
+    <title>Speed Sports Admin - <?= $title ?></title>
 
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
@@ -45,6 +50,14 @@ $title = ucfirst(str_replace(".php", "", $title));
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="stylesheet" href="../../assets/css/admin/style.css">
 
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Select 2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+
     <!-- CKEditor -->
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.1/ckeditor5.css" />
     <script type="importmap">
@@ -64,6 +77,12 @@ $title = ucfirst(str_replace(".php", "", $title));
 
     <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Select 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+
+    <!-- Notification -->
+    <?php include_once "../../components/notification.php" ?>
 
     <main class="bg-body-tertiary" style="min-height: 100vh;">
         <?php include_once "../../components/sidebar-admin.php" ?>

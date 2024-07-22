@@ -40,13 +40,28 @@
             </div>
         </div>
         <div class="col-3 px-2">
-            <span class="fs-6">
-                <i class="fa-regular fa-circle-info me-2"></i> Pastikan semua sudah benar ya
+            <span class="fs-5 poppins-medium">
+                </i> Sisa Stock: <?= $product->stock ?>
             </span>
+            <div class="fs-6 poppins-medium mt-3">Atur Jumlah</div>
+            <div class="d-flex just gap-3 mt-2">
+                <button id="btn-kurang-qty" class="btn btn-danger">
+                    <i class="fa-regular fa-minus"></i>
+                </button>
+                <input readonly type="number" class="text-center form-control" id="qty" name="qty" min="1"
+                    max="<?= $product->stock ?>" value="1">
+                <button id="btn-tambah-qty" class="btn btn-success">
+                    <i class="fa-regular fa-plus"></i>
+                </button>
+            </div>
+            <div class="fs-6 mt-3">
+                <i class="fa-regular fa-circle-info me-2"></i> Pastikan semua sudah benar ya
+            </div>
             <div class="mt-3">
                 <form action="../../config/functions.php" method="POST">
                     <input type="hidden" name="id" value="<?= $product->id ?>">
                     <input type="hidden" name="list_variant" id="list-variant">
+                    <input type="hidden" name="qty" id="input-qty" value="1">
                     <button name="buy" class="btn btn-primary w-100 text-center d-block">
                         <i class="fa-regular fa-money-bill-wave me-1"></i> Beli Sekarang
                     </button>
